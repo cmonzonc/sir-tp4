@@ -8,7 +8,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import opower.*;
-import jpa.*;
 
 public class Main {
 
