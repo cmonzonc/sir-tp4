@@ -3,3 +3,5 @@
 .setings
 dependency
 /dependecy
+/target/classes/
+/target/test-classes/
