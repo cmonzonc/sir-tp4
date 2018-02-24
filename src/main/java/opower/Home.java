@@ -3,6 +3,7 @@ package opower;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -30,8 +31,9 @@ public class Home {
 		this.size = size;
 		this.pieces = pieces;
 	}
-	@Id
-	@GeneratedValue
+    @Id
+    @Column(name = "idHome")
+    @GeneratedValue
 	public Integer getId() {
 		return id;
 	}

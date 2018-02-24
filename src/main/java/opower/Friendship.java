@@ -1,5 +1,6 @@
 package opower;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -16,8 +17,9 @@ public class Friendship {
 	public Friendship(Long id) {
 		this.id = id;
 	}
-	@Id
-	@GeneratedValue
+    @Id
+    @Column(name = "idFriendship")
+    @GeneratedValue
 	public Long getId() {
 		return id;
 	}
