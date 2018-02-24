@@ -5,7 +5,7 @@ import java.util.Collection;
 public interface CommandAPI<objectScope> {
 	
 	objectScope get(Object identifier);
-    void put(objectScope entity);
+    boolean put(objectScope entity);
     objectScope update(objectScope entity);
     objectScope remove(objectScope identifier);
     Collection<objectScope> findAll();

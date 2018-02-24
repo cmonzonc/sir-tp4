@@ -55,9 +55,9 @@ public class GeneralQueries {
 
 	        person = createPerson(name_person, surname_person, mail);
 
-	        Home home = new Home(size, pieces, name, person);
+	        // Home home = new Home(size, pieces, name, person);
 
-	        manager.persist(home);
+	        // manager.persist(home);
 	    }
 
 	    public Person createPerson(String name, String surname, String mail) {

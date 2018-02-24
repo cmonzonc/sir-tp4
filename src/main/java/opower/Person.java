@@ -99,7 +99,12 @@ public class Person {
     @Column(name = "idPerson")
     @GeneratedValue
     public Integer getId() {
+    	
+    		if (this == null)
+    		     throw new IllegalArgumentException("The argument cannot be null");
+    	
         return id;
+        
     }
 
     public void setId(Integer id) {

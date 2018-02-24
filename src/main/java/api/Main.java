@@ -50,10 +50,11 @@ public class Main {
         System.out.println(".. done");
     }
 
-    public static void testPersonDao() {
+    @SuppressWarnings("unchecked")
+	public static void testPersonDao() {
 
     		// Create persons
-        PersonAPI dao = new PersonAPI();
+        CommandAPI personQueries = new PersonAPI();
         Person person = new Person("Christian", "Monzón", "christian@telemetrio.com");        
         
         // Create friends
@@ -67,11 +68,23 @@ public class Main {
 
         	// Set friends
         person.setFriends(friends);        
-        dao.put(person);
-        person = (Person) dao.get(person.getId());
+        personQueries.put(person);
+        person = (Person) personQueries.get(person.getId());
         
         // Showing information
-        System.out.println(person.toString());
+        System.out.println(person.getId());
+        
+        CommandAPI homeQueries = new HomeAPI();
+        
+        List<Home> homes = new ArrayList<Home>();
+        Home home = new Home(12.23, 2, "Christian's home"); 
+    
+        homes.add(home);
+        home.setPerson(person);
+        
+        homeQueries.put(home);
+
+        
         
     }
 }

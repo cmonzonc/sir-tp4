@@ -25,9 +25,8 @@ public class Home {
 		super();
 	}
 	
-	public Home(Double size, Integer pieces, String name, Person person) {
+	public Home(Double size, Integer pieces, String name) {
 		this.name = name;
-		this.person = person;
 		this.size = size;
 		this.pieces = pieces;
 	}

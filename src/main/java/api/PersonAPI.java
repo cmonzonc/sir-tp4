@@ -39,22 +39,39 @@ public class PersonAPI implements CommandAPI<Person> {
     }
 
 	public Person get(Object identifier) {
- System.out.println(identifier);
-		  return (Person)(entityManager.find(Person.class, identifier));
 		
+		if(identifier == null) {
+			throw new IllegalArgumentException("The argument cannot be null");
+		}
+		
+		return (Person)(entityManager.find(Person.class, identifier));
+
 	}
 
-	public void put(Person entity) {
-        if (entity != null) {
-            ;
-        }
-        
-        {
-            entityTransaction.begin();
-            entityManager.persist(entity);
-            entityTransaction.commit();
-        }
+	
+	public boolean put(Person entity) {
 		
+		if(entity !=null) {
+			try {
+	            entityTransaction.begin();
+	            entityManager.persist(entity);
+	            entityTransaction.commit();
+	            
+	            return true;
+	            
+			}catch(Exception e) {
+				System.out.println("Exception occurred");
+				return false;
+			}
+			
+		}else {
+		
+			return false; 
+			
+		}
+
+
+  
 	}
 
 	public Person remove(Person identifier) {
