@@ -16,7 +16,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Person {
     private List<Home> homes = new ArrayList<Home>();
-    private List<ElectronicDevice> electronicdevices = new ArrayList<ElectronicDevice>();
     private List<Person> friendships = new ArrayList<Person>();
     private Integer id;
     private String name;
@@ -43,18 +42,6 @@ public class Person {
         // + home.getName() + "]";
     }
 
-    @OneToMany(
-        mappedBy = "person",
-        cascade = CascadeType.PERSIST
-    )
-    public List<ElectronicDevice> getElectronicdevices() {
-        return electronicdevices;
-    }
-
-    public void setElectronicdevices(List<ElectronicDevice> electronicdevices) {
-        this.electronicdevices = electronicdevices;
-    }
-
     public String getEmail() {
         return mail;
     }
@@ -65,7 +52,7 @@ public class Person {
 
     @ManyToMany(cascade = { CascadeType.PERSIST })
     @JoinTable(
-        name = "friendship",
+        name = "Friendship",
         joinColumns = { @JoinColumn(
             name = "idPersonFriend1",
             referencedColumnName = "idPerson"

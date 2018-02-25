@@ -14,16 +14,18 @@ import javax.persistence.InheritanceType;
 public class Device {
     @Column(name = "idDevice")
     private long id;
-    private String name;
+    protected String name;
+	protected String unit;
 
     public Device() {
 
         // TODO Auto-generated constructor stub
     }
 
-    public Device(String name) {
+    public Device(String name, String unit) {
         super();
         this.name = name;
+        this.unit = unit;
     }
 
     @Id
@@ -43,6 +45,8 @@ public class Device {
     public void setName(String name) {
         this.name = name;
     }
+    
+    
 }
 
 

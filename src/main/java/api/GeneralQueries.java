@@ -20,30 +20,31 @@ public class GeneralQueries {
         this.manager = manager;
     }
 
-    public void createElectronicDevice(String name, Integer consumption, Person person) {
-        ElectronicDevice electronicDevice = new ElectronicDevice(consumption);
+    public void createElectronicDevice(String name, Integer consumption, String unit) {
+        ElectronicDevice electronicDevice = new ElectronicDevice(name, consumption, unit);
 
         electronicDevice.setName("Microwave");
 
-        if (person != null) {
-            electronicDevice.setPerson(person);
-        }
+        //if (person != null) {
+        //    electronicDevice.setPerson(person);
+        //}
 
         manager.persist(electronicDevice);
     }
 
  
 	
-	   public void createHeater(String name, Integer power, Home home) {
-	        Heater heater = new Heater(name, power, home);
-
+	   public void createHeater(String name, Integer power, String unit, String place) {
+	        Heater heater = new Heater(name, power, unit, place);
+	        
 	        heater.setName("Microwave");
 
-	        if (home != null) {
-	            heater.setHome(home);
-	        }
+	        //if (home != null) {
+	        //    heater.setHome(home);
+	        //}
 
 	        manager.persist(heater);
+	        
 	    }
 
 	    public void createHome(Double size, Integer pieces, String name, String name_person, String surname_person,

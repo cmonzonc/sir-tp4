@@ -82,8 +82,19 @@ public class Main {
         homes.add(home);
         home.setPerson(person);
         
-        homeQueries.put(home);
+        
 
+        Heater heating = new Heater("Living room 1", 1600, "watts", "Living");
+        ElectronicDevice electronic = new ElectronicDevice("Hi-Fi Audio System", 1600, "Kwh");
+        electronic.setPerson(person);
+        
+        //home.getHeater().add((Heater) heating);
+        home.getDevice().add(heating);
+        home.getDevice().add(electronic);
+        homeQueries.put(home);
+        
+        //home.getMachines().add(sd);
+        //home.getMachines().add(ed);
         
         
     }

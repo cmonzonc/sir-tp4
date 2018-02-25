@@ -7,8 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
 
 @Entity
 public class Home {
@@ -19,8 +21,16 @@ public class Home {
 	private Double size;
 	private Integer pieces;
 	
-	private List<Heater> heaters = new ArrayList<Heater>();
-	
+    private List<Device> Devices = new ArrayList<Device>();
+
+
+    @Id
+    @Column(name = "idHome")
+    @GeneratedValue
+	public Integer getId() {
+		return id;
+	}
+    
 	public Home() {
 		super();
 	}
@@ -30,12 +40,7 @@ public class Home {
 		this.size = size;
 		this.pieces = pieces;
 	}
-    @Id
-    @Column(name = "idHome")
-    @GeneratedValue
-	public Integer getId() {
-		return id;
-	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -57,18 +62,22 @@ public class Home {
 	public void setPieces(Integer pieces) {
 		this.pieces = pieces;
 	}
-	@ManyToOne
+	@ManyToOne(optional=false)
+	@JoinColumn(name="idPerson",referencedColumnName="idPerson")
 	public Person getPerson() {
 		return person;
 	}
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-	@OneToMany(mappedBy = "home", cascade = CascadeType.PERSIST)
-	public List<Heater> getHeater() {
-		return heaters;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name="idHome", referencedColumnName = "idHome")	
+	public List<Device> getDevice() {
+		return Devices;
 	}
-	public void setHeater(List<Heater> heaters) {
-		this.heaters = heaters;
+	public void setDevice(List<Device> devices) {
+		Devices = devices;
+	
 	}
+
 }

@@ -39,7 +39,7 @@ public class HomeAPI implements CommandAPI<Home> {
 	            entityTransaction.begin();
 	            entityManager.persist(entity);
 	            entityTransaction.commit();
-	            
+	            entityManager.close();
 	            return true;
 	            
 			}catch(Exception e) {
@@ -60,6 +60,7 @@ public class HomeAPI implements CommandAPI<Home> {
     			entityTransaction.begin();
     			entityManager.merge(entity);
     			entityTransaction.commit();
+    			entityManager.close();
 	    }
 
 	    return entity;
@@ -73,6 +74,7 @@ public class HomeAPI implements CommandAPI<Home> {
 	        entityTransaction.begin();
 	        entityManager.remove(home);
 	        entityTransaction.commit();
+	        entityManager.close();
 	    }
 
 	    return home;
