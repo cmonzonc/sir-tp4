@@ -114,6 +114,3 @@ public class Person {
         this.surname = surname;
     }
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

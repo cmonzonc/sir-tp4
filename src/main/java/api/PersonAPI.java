@@ -8,8 +8,7 @@ import javax.persistence.criteria.*;
 import opower.Person;
 
 public class PersonAPI implements CommandAPI<Person> {
-    
-	private EntityManager entityManager;
+    private EntityManager entityManager;
     private EntityTransaction entityTransaction;
     Person person;
 
@@ -17,7 +16,6 @@ public class PersonAPI implements CommandAPI<Person> {
         entityManager = LocalEntityManagerFactory.getInstance();
         entityTransaction = entityManager.getTransaction();
     }
-
 
     public Collection<Person> findAll() {
         CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
@@ -28,54 +26,25 @@ public class PersonAPI implements CommandAPI<Person> {
         return entityManager.createQuery(q).getResultList();
     }
 
-    public Person update(Person entity) {
+    public boolean put(Person entity) {
         if (entity != null) {
-        		entityTransaction.begin();
-            entityManager.merge(entity);
-            entityTransaction.commit();
-        }
+            try {
+                entityTransaction.begin();
+                entityManager.persist(entity);
+                entityTransaction.commit();
 
-        return entity;
+                return true;
+            } catch (Exception e) {
+                System.out.println("Exception occurred");
+
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
-	public Person get(Object identifier) {
-		
-		if(identifier == null) {
-			throw new IllegalArgumentException("The argument cannot be null");
-		}
-		
-		return (Person)(entityManager.find(Person.class, identifier));
-
-	}
-
-	
-	public boolean put(Person entity) {
-		
-		if(entity !=null) {
-			try {
-	            entityTransaction.begin();
-	            entityManager.persist(entity);
-	            entityTransaction.commit();
-	            
-	            return true;
-	            
-			}catch(Exception e) {
-				System.out.println("Exception occurred");
-				return false;
-			}
-			
-		}else {
-		
-			return false; 
-			
-		}
-
-
-  
-	}
-
-	public Person remove(Person identifier) {
-		
+    public Person remove(Person identifier) {
         person = entityManager.getReference(Person.class, identifier);
 
         if (person != null) {
@@ -85,6 +54,23 @@ public class PersonAPI implements CommandAPI<Person> {
         }
 
         return person;
-	}
-    
+    }
+
+    public Person update(Person entity) {
+        if (entity != null) {
+            entityTransaction.begin();
+            entityManager.merge(entity);
+            entityTransaction.commit();
+        }
+
+        return entity;
+    }
+
+    public Person get(Object identifier) {
+        if (identifier == null) {
+            throw new IllegalArgumentException("The argument cannot be null");
+        }
+
+        return (Person) (entityManager.find(Person.class, identifier));
+    }
 }

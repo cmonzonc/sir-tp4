@@ -15,7 +15,7 @@ public class Device {
     @Column(name = "idDevice")
     private long id;
     protected String name;
-	protected String unit;
+    protected String unit;
 
     public Device() {
 
@@ -45,9 +45,4 @@ public class Device {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

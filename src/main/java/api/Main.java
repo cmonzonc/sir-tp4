@@ -24,15 +24,16 @@ public class Main {
         tx.begin();
 
         try {
-        	/*
-            test.createHome(234.0, 3, "Carlos' Home", "Charles", "Foulon", "charles@gmail.com");
-            test.createHome(134.5, 3, "Malaine' Home", "Malaine", "Doré", "malaine@gmail.com");
-            test.createHome(466.4, 3, "Antoine' Home", "Antoine", "Macron", "antoine@gmail.com");
-            test.createHome(340.0, 3, "Carontin' Home", "Carontin", "Queguiner", "carontin@gmail.com");
-            test.createElectronicDevice("Microwave", 1000, manager.find(Person.class, 1));
-            test.createHeater("Living Room", 1500, manager.find(Home.class, 1));
-            test.createHeater("Room", 2500, manager.find(Home.class, 2));
-            */
+
+            /*
+             * test.createHome(234.0, 3, "Carlos' Home", "Charles", "Foulon", "charles@gmail.com");
+             * test.createHome(134.5, 3, "Malaine' Home", "Malaine", "Doré", "malaine@gmail.com");
+             * test.createHome(466.4, 3, "Antoine' Home", "Antoine", "Macron", "antoine@gmail.com");
+             * test.createHome(340.0, 3, "Carontin' Home", "Carontin", "Queguiner", "carontin@gmail.com");
+             * test.createElectronicDevice("Microwave", 1000, manager.find(Person.class, 1));
+             * test.createHeater("Living Room", 1500, manager.find(Home.class, 1));
+             * test.createHeater("Room", 2500, manager.find(Home.class, 2));
+             */
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,12 +52,12 @@ public class Main {
     }
 
     @SuppressWarnings("unchecked")
-	public static void testPersonDao() {
+    public static void testPersonDao() {
 
-    		// Create persons
+        // Create persons
         CommandAPI personQueries = new PersonAPI();
-        Person person = new Person("Christian", "Monzón", "christian@telemetrio.com");        
-        
+        Person person = new Person("Christian", "Monzón", "christian@telemetrio.com");
+
         // Create friends
         List<Person> friends = new ArrayList<Person>();
         Person friend1 = new Person("Carl", "Sagan", "carl@nasa.com");
@@ -66,39 +67,29 @@ public class Main {
         friends.add(friend1);
         friends.add(friend2);
 
-        	// Set friends
-        person.setFriends(friends);        
+        // Set friends
+        person.setFriends(friends);
         personQueries.put(person);
         person = (Person) personQueries.get(person.getId());
-        
+
         // Showing information
         System.out.println(person.getId());
-        
+
         CommandAPI homeQueries = new HomeAPI();
-        
         List<Home> homes = new ArrayList<Home>();
-        Home home = new Home(12.23, 2, "Christian's home"); 
-    
+        Home home = new Home(12.23, 2, "Christian's home");
+
         homes.add(home);
         home.setPerson(person);
-        
-        
 
         Heater heating = new Heater("Living room 1", 1600, "watts", "Living");
         ElectronicDevice electronic = new ElectronicDevice("Hi-Fi Audio System", 1600, "Kwh");
+
         electronic.setPerson(person);
-        
-        //home.getHeater().add((Heater) heating);
+
+        // home.getHeater().add((Heater) heating);
         home.getDevice().add(heating);
         home.getDevice().add(electronic);
         homeQueries.put(home);
-        
-        //home.getMachines().add(sd);
-        //home.getMachines().add(ed);
-        
-        
     }
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com
