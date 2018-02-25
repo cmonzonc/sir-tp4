@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import opower.*;
+import services.*;
 
 public class Main {
 
@@ -16,39 +17,12 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
-        EntityManager manager = factory.createEntityManager();
-        GeneralQueries test = new GeneralQueries(manager);
-        EntityTransaction tx = manager.getTransaction();
-
-        tx.begin();
-
-        try {
-
-            /*
-             * test.createHome(234.0, 3, "Carlos' Home", "Charles", "Foulon", "charles@gmail.com");
-             * test.createHome(134.5, 3, "Malaine' Home", "Malaine", "Doré", "malaine@gmail.com");
-             * test.createHome(466.4, 3, "Antoine' Home", "Antoine", "Macron", "antoine@gmail.com");
-             * test.createHome(340.0, 3, "Carontin' Home", "Carontin", "Queguiner", "carontin@gmail.com");
-             * test.createElectronicDevice("Microwave", 1000, manager.find(Person.class, 1));
-             * test.createHeater("Living Room", 1500, manager.find(Home.class, 1));
-             * test.createHeater("Room", 2500, manager.find(Home.class, 2));
-             */
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        tx.commit();
-
-        // test.listHomes();
-        // test.listPerson();
-        test.listElectronicDevice();
-        test.listHeater();
-        test.getPersonById(2);
-        test.getHomeById(2);
-        manager.close();
+    		System.out.println("Creating services:");
         testPersonDao();
-        System.out.println(".. done");
+        System.out.println("Done.");
+        System.out.println("Executing queries:");
+        testingServices();
+        System.out.println("Done.");
     }
 
     @SuppressWarnings("unchecked")
@@ -92,4 +66,42 @@ public class Main {
         home.getDevice().add(electronic);
         homeQueries.put(home);
     }
+    
+    public static void testingServices() {
+    	
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
+        EntityManager manager = factory.createEntityManager();
+        GeneralQueries test = new GeneralQueries(manager);
+        HomeServices testHome = new HomeServices(manager);
+        DeviceServices testDevice = new DeviceServices(manager);
+        PersonServices testPerson = new PersonServices(manager);
+        EntityTransaction tx = manager.getTransaction();
+
+        tx.begin();
+
+        try {
+
+            // testDevice.listElectronicDevice();
+            // testDevice.listHeater();
+            // 
+            // testPerson.getPersonById(2);
+            // testHome.getHomeById(2);
+        	testPerson.getPersons();
+        		testPerson.getPersonByIdentifier(1);
+        		
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        tx.commit();
+
+        // test.listHomes();
+        // test.listPerson();
+
+        manager.close();
+    	
+    	
+    }
+    
+    
 }
