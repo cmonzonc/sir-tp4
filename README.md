@@ -54,8 +54,11 @@ Un serveur de servlet et un serveur Web REST (JAX RS) seront lancés:
 
 | Address | Description | Method |
 | :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
+| http://localhost:8080  | Main page    | Show the servlets disponibles |
+| http://localhost:8080/persons    | GET | Registration page |
+| http://localhost:8080/person     | POST | Receive the information from the form    |
+| http://localhost:8080/person     | GET  |  Show all persons getting the information from the Servlet  |
+| http://localhost:8080/persons/listperson.html    | GET  | Show all persons getting the information from the REST API   |
 
 ### WS REST (Requetes disponibles)
 
