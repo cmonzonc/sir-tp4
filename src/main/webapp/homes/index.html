@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+		<title>Create home</title>
+	</head>
+	<body>
+		<main>
+			<div class="container">
+				<div class="row">
+					<div class="col s12 m9 l10">
+						<div class="section">
+							<div id="roboto" class="scrollspy">
+								<div id="blockquote" class="section scrollspy">
+									<h2 class="header">Create person</h2>
+									<p>
+										Blockquotes are mainly used to give emphasis to a quote or citation. You can also use these for some extra text hierarchy and emphasis.
+									</p>
+									<blockquote>
+										This is an example quotation that uses the blockquote tag.
+										<br>Here is another line to make it look bigger.
+									</blockquote>
+									<p>We provide some basic styling on header tags. In the example, you can see the the 6 header tags' different sizes.</p>
+									<div class="card-panel">
+										<div class="row">
+											<form method="POST" action="/home" id="addHome" class="col s12">
+												<div class="row">
+													<div class="input-field col s6">
+														<input placeholder="Placeholder" id="name" type="text" class="validate" name="name">
+														<label for="name">Name</label>
+													</div>
+													<div class="input-field col s6">
+														<input id="size" type="text" class="validate" name="size">
+														<label for="size">Size</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12">
+														<input id="rooms" type="text" class="validate" name="rooms">
+														<label for="rooms">Rooms</label>
+													</div>
+												</div>
+												<button class="btn waves-effect waves-light" type="submit" name="action">Create person
+												</button>
+												<button class="btn waves-effect waves-light" onclick="addHome()" name="action">Create person 2
+												</button>
+												<!--
+													<div class="row">
+														<div class="col s12">
+															This is an inline input field:
+															<div class="input-field inline">
+																<input id="email" type="email" class="validate">
+																<label for="email" data-error="wrong" data-success="right">Email</label>
+															</div>
+														</div>
+													</div>
+													-->
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Container -->
+			</div>
+		</main>
+		<script type="text/javascript">
+			function addHome()
+			{
+			    var xhr = new XMLHttpRequest();
+			    xhr.open('POST', '/home');
+			    var form = document.getElementById('addHome');
+			
+			    xhr.send(new FormData(form));
+			}
+		</script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	</body>
+</html>

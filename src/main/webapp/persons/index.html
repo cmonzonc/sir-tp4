@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+		<title>Create person</title>
+	</head>
+	<body>
+		<main>
+			<div class="container">
+				<div class="row">
+					<div class="col s12 m9 l10">
+						<div class="section">
+							<div id="roboto" class="scrollspy">
+								<div id="blockquote" class="section scrollspy">
+									<h2 class="header">Create person</h2>
+										<div class="row center">
+											<a class="waves-effect waves-light btn-large" href="/person">Get all persons (Servlet)</a>
+											<a class="waves-effect waves-light btn-large" href="/persons/listperson.html">Get all persons (API REST)</a>
+										</div>
+									<blockquote>
+										This is an example to create a new user using Servlets and REST API
+										<br>
+									</blockquote>
+									
+									<div class="card-panel">
+										<div class="row">
+											<form method="POST" action="/person" id="addPerson" class="col s12">
+												<div class="row">
+													<div class="input-field col s6">
+														<input placeholder="Placeholder" id="firstname" type="text" class="validate" name="firstname">
+														<label for="firstname">First Name</label>
+													</div>
+													<div class="input-field col s6">
+														<input id="lastname" type="text" class="validate" name="lastname">
+														<label for="lastname">Last Name</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12">
+														<input id="email" type="email" class="validate" name="email">
+														<label for="email">Email</label>
+													</div>
+												</div>
+												
+												<button class="btn waves-effect waves-light" type="submit" name="action">Create person (Rest API)
+												</button>
+												<button class="btn waves-effect waves-light" onclick="addPerson()" name="action">Create person (Servlet)
+												</button>
+												<!--
+													<div class="row">
+														<div class="col s12">
+															This is an inline input field:
+															<div class="input-field inline">
+																<input id="email" type="email" class="validate">
+																<label for="email" data-error="wrong" data-success="right">Email</label>
+															</div>
+														</div>
+													</div>
+													-->
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Container -->
+			</div>
+		</main>
+		<script type="text/javascript">
+			function addPerson()
+			{
+			    var xhr = new XMLHttpRequest();
+			    xhr.open('POST', '/person');
+			    var form = document.getElementById('addPerson');
+			
+			    xhr.send(new FormData(form));
+			}
+		</script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	</body>
+</html>
