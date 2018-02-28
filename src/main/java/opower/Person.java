@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -50,7 +51,7 @@ public class Person {
         this.mail = mail;
     }
 
-    @ManyToMany(cascade = { CascadeType.PERSIST })
+    @ManyToMany(cascade = { CascadeType.PERSIST }, fetch=FetchType.LAZY)
     @JoinTable(
         name = "Friendship",
         joinColumns = { @JoinColumn(
@@ -72,7 +73,8 @@ public class Person {
 
     @OneToMany(
         mappedBy = "person",
-        cascade = CascadeType.PERSIST
+        cascade = CascadeType.PERSIST,
+        fetch= FetchType.LAZY
     )
     public List<Home> getHomes() {
         return homes;
