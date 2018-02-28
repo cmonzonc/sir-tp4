@@ -18,6 +18,7 @@ public class PersonAPI implements CommandAPI<Person> {
     }
 
     public Collection<Person> findAll() {
+    		
         CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
         CriteriaQuery<Person> query = criteria.createQuery(Person.class);
         Root<Person> pers = query.from(Person.class);
@@ -44,7 +45,7 @@ public class PersonAPI implements CommandAPI<Person> {
         }
     }
 
-    public Person remove(Person identifier) {
+    public boolean remove(Integer identifier) {
         person = entityManager.getReference(Person.class, identifier);
 
         if (person != null) {
@@ -53,9 +54,13 @@ public class PersonAPI implements CommandAPI<Person> {
             entityTransaction.commit();
         }
 
-        return person;
+        return true;
     }
 
+    public Person find(Object identifier) {  
+        return (Person)(entityManager.find(Person.class, identifier));
+    }
+    
     public Person update(Person entity) {
         if (entity != null) {
             entityTransaction.begin();
@@ -73,4 +78,14 @@ public class PersonAPI implements CommandAPI<Person> {
 
         return (Person) (entityManager.find(Person.class, identifier));
     }
+
+	public Person remove(long parseLong) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Person remove(Person identifier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

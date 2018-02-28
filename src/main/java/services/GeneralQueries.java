@@ -13,11 +13,12 @@ import opower.Home;
 import opower.Person;
 
 public class GeneralQueries {
-    private EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
-    protected EntityManager manager = factory.createEntityManager();
+	
+    public EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
+    public EntityManager manager = factory.createEntityManager();
     CriteriaBuilder cb = manager.getCriteriaBuilder();
     
-    public GeneralQueries(EntityManager manager) {
+    public GeneralQueries() {
         this.manager = manager;
         this.cb = cb;
     }

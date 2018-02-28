@@ -2,12 +2,13 @@ package api;
 
 import java.util.Collection;
 
-public interface CommandAPI<objectScope> {
+public interface CommandAPI<T> {
 	
-	objectScope get(Object identifier);
-    boolean put(objectScope entity);
-    objectScope update(objectScope entity);
-    objectScope remove(objectScope identifier);
-    Collection<objectScope> findAll();
+	T get(Object identifier);
+    boolean put(T entity);
+    T update(T entity);
+    T remove(T identifier);
+    Collection<T> findAll();
 
 }
+

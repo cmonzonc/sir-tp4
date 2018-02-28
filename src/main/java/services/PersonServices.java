@@ -14,11 +14,11 @@ public class PersonServices extends GeneralQueries {
     CriteriaQuery<Person> criteriaQuery = cb.createQuery(Person.class);
     Root<Person> personRoot = criteriaQuery.from(Person.class);
 
-    public PersonServices(EntityManager manager) {
-        super(manager);
+    public PersonServices() {
+        super();
     }
 
-    public void showResponse(List<Person> persons) {
+	public void showResponse(List<Person> persons) {
         for (Person person : persons) {
             System.out.println(">:" + person.getName());
             System.out.println(">:" + person.getSurname());
@@ -63,7 +63,7 @@ public class PersonServices extends GeneralQueries {
         TypedQuery<Person> allQuery = manager.createQuery(all);
         List<Person> persons = allQuery.getResultList();
 
-        showResponse(persons);
+        //showResponse(persons);
 
         return persons;
     }
