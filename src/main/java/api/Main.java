@@ -64,41 +64,42 @@ public class Main {
         // home.getHeater().add((Heater) heating);
         home.getDevice().add(heating);
         home.getDevice().add(electronic);
+        personQueries.findAll();
         homeQueries.put(home);
     }
     
     public static void testingServices() {
     	
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
-        EntityManager manager = factory.createEntityManager();
-        GeneralQueries test = new GeneralQueries(manager);
-        HomeServices testHome = new HomeServices(manager);
-        DeviceServices testDevice = new DeviceServices(manager);
-        PersonServices testPerson = new PersonServices(manager);
-        EntityTransaction tx = manager.getTransaction();
+//        EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
+//        EntityManager manager = factory.createEntityManager();
+        GeneralQueries test = new GeneralQueries();
+        HomeServices testHome = new HomeServices();
+        DeviceServices testDevice = new DeviceServices();
+        PersonServices testPerson = new PersonServices();
+        //EntityTransaction tx = manager.getTransaction();
 
-        tx.begin();
+        //tx.begin();
 
         try {
-
-            // testDevice.listElectronicDevice();
-            // testDevice.listHeater();
+        	//	testHome.listHomes();
+          //   testDevice.listElectronicDevice();
+           //  testDevice.listHeater();
             // 
-            // testPerson.getPersonById(2);
-            // testHome.getHomeById(2);
-        	testPerson.getPersons();
-        		testPerson.getPersonByIdentifier(1);
+             //testPerson.getPersonById(2);
+          //   testHome.getHomeById(2);
+        	//testPerson.getPersons();
+        		//testPerson.getPersonByIdentifier(1);
         		
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        tx.commit();
+        //tx.commit();
 
         // test.listHomes();
         // test.listPerson();
 
-        manager.close();
+        //manager.close();
     	
     	
     }

@@ -21,12 +21,10 @@ public class HomeAPI implements CommandAPI<Home> {
     }
 
     public Collection<Home> findAll() {
-        CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Home> query = criteria.createQuery(Home.class);
-        Root<Home> home = query.from(Home.class);
-        CriteriaQuery<Home> queryHome = query.select(home);
-
-        return entityManager.createQuery(queryHome).getResultList();
+    	
+    		TypedQuery<Home> TQ = entityManager.createNamedQuery("home.find.all", Home.class);
+        return TQ.getResultList();
+        
     }
 
     public boolean put(Home entity) {
@@ -81,4 +79,8 @@ public class HomeAPI implements CommandAPI<Home> {
 
         return home;
     }
+
+	public Home find(Object identifier) {
+        return (Home)(entityManager.find(Home.class, identifier));
+	}
 }

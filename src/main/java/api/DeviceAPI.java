@@ -8,6 +8,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import opower.Device;
+import opower.ElectronicDevice;
+import opower.Heater;
+import opower.Person;
 
 public class DeviceAPI implements CommandAPI<Device> {
     private EntityManager entityManager;
@@ -68,6 +71,14 @@ public class DeviceAPI implements CommandAPI<Device> {
         return entity;
     }
 
+    public Device findHeater(Object identifier) {  
+        return (Device)(entityManager.find(Device.class, identifier));
+    }
+
+    public ElectronicDevice findElectronic(Object identifier) {  
+        return (ElectronicDevice)(entityManager.find(ElectronicDevice.class, identifier));
+    }    
+    
     public Device get(Object identifier) {
         if (identifier == null) {
             throw new IllegalArgumentException("The argument cannot be null");
