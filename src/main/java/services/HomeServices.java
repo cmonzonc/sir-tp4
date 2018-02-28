@@ -10,8 +10,8 @@ import opower.Person;
 public class HomeServices extends GeneralQueries {
 
 
-    public HomeServices(EntityManager manager) {
-		super(manager);
+    public HomeServices() {
+		super();
 	}
 
 
@@ -33,14 +33,11 @@ public class HomeServices extends GeneralQueries {
 
 
 
-    public void listHomes() {
+    public List<Home> listHomes() {
+    	
         List<Home> resultList = manager.createQuery("Select a From Home a", Home.class).getResultList();
-
-        System.out.println("Number of houses: " + resultList.size());
-
-        for (Home next : resultList) {
-            System.out.println("Home: " + next.getId() + next.getName() + next.getPieces() + next.getTaille());
-        }
+        return resultList;
+        
     }
 	
     public void getHomeById(Integer idHome) {
