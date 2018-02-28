@@ -10,32 +10,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import api.HomeAPI;
 import api.PersonAPI;
+import opower.Home;
 import opower.Person;
 
 @WebServlet(
-    name = "person",
-    urlPatterns = { "/person" }
+    name = "home",
+    urlPatterns = { "/home" }
 )
-public class PersonServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 460411854431572476L;
+	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
-        Person person = new Person();
-
-        person.setName(request.getParameter("firstname"));
-        person.setSurname(request.getParameter("lastname"));
-        person.setEmail(request.getParameter("email"));
+        Home home = new Home(Double.parseDouble(request.getParameter("size").toString()), 
+        		Integer.parseInt(request.getParameter("rooms").toString()),
+        		request.getParameter("name"));
         
-        PersonAPI personApi = new PersonAPI();
-        personApi.put(person);
+        System.out.print(home.getName());
+        System.out.print(home.getTaille());
+        
+        HomeAPI homeApi = new HomeAPI();
+        homeApi.put(home);
       
-        request.setAttribute("insertedPerson", person);
-        this.getServletContext().getRequestDispatcher("/persons/persons_post.jsp").forward(request, response);
+        request.setAttribute("insertedHome", home);
+        this.getServletContext().getRequestDispatcher("/homes/homes_post.jsp").forward(request, response);
         
     }
 	
@@ -43,7 +46,7 @@ public class PersonServlet extends HttpServlet {
 
         List<Person> persons = getListPerson();
         request.setAttribute("listPerson", persons);
-        this.getServletContext().getRequestDispatcher("/persons/persons.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/homes/homes.jsp").forward(request, response);
 		
 		PrintWriter out = response.getWriter();
 		out.println("test");

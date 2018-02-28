@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-		<title>Create person</title>
+		<title>Create home</title>
 	</head>
 	<body>
 		<main>
@@ -12,38 +12,36 @@
 							<div id="roboto" class="scrollspy">
 								<div id="blockquote" class="section scrollspy">
 									<h2 class="header">Create person</h2>
-										<div class="row center">
-											<a class="waves-effect waves-light btn-large" href="/person">Get all persons (Servlet)</a>
-											<a class="waves-effect waves-light btn-large" href="/persons/listperson.html">Get all persons (API REST)</a>
-										</div>
+									<p>
+										Blockquotes are mainly used to give emphasis to a quote or citation. You can also use these for some extra text hierarchy and emphasis.
+									</p>
 									<blockquote>
-										This is an example to create a new user using Servlets and REST API
-										<br>
+										This is an example quotation that uses the blockquote tag.
+										<br>Here is another line to make it look bigger.
 									</blockquote>
-									
+									<p>We provide some basic styling on header tags. In the example, you can see the the 6 header tags' different sizes.</p>
 									<div class="card-panel">
 										<div class="row">
-											<form method="POST" action="/person" id="addPerson" class="col s12">
+											<form method="POST" action="/home" id="addHome" class="col s12">
 												<div class="row">
 													<div class="input-field col s6">
-														<input placeholder="Placeholder" id="firstname" type="text" class="validate" name="firstname">
-														<label for="firstname">First Name</label>
+														<input placeholder="Placeholder" id="name" type="text" class="validate" name="name">
+														<label for="name">Name</label>
 													</div>
 													<div class="input-field col s6">
-														<input id="lastname" type="text" class="validate" name="lastname">
-														<label for="lastname">Last Name</label>
+														<input id="size" type="text" class="validate" name="size">
+														<label for="size">Size</label>
 													</div>
 												</div>
 												<div class="row">
 													<div class="input-field col s12">
-														<input id="email" type="email" class="validate" name="email">
-														<label for="email">Email</label>
+														<input id="rooms" type="text" class="validate" name="rooms">
+														<label for="rooms">Rooms</label>
 													</div>
 												</div>
-												
-												<button class="btn waves-effect waves-light" type="submit" name="action">Create person (Rest API)
+												<button class="btn waves-effect waves-light" type="submit" name="action">Create person
 												</button>
-												<button class="btn waves-effect waves-light" onclick="addPerson()" name="action">Create person (Servlet)
+												<button class="btn waves-effect waves-light" onclick="addHome()" name="action">Create person 2
 												</button>
 												<!--
 													<div class="row">
@@ -68,11 +66,11 @@
 			</div>
 		</main>
 		<script type="text/javascript">
-			function addPerson()
+			function addHome()
 			{
 			    var xhr = new XMLHttpRequest();
-			    xhr.open('POST', '/person');
-			    var form = document.getElementById('addPerson');
+			    xhr.open('POST', '/home');
+			    var form = document.getElementById('addHome');
 			
 			    xhr.send(new FormData(form));
 			}

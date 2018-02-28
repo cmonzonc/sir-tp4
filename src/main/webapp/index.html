@@ -1,8 +1,6 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<title>Create person</title>
 	</head>
 	<body>
@@ -13,13 +11,17 @@
 						<div class="section">
 							<div id="roboto" class="scrollspy">
 								<div id="blockquote" class="section scrollspy">
-									<h2 class="header">List all persons (API Rest)</h2>
+									<h2 class="header">Servlet</h2>
+									<p>
+
+									</p>
+
+									<p>Here I provide access to the functions related with the Servlet and the API REST
+									</p>
 									<div class="card-panel">
-										<div class="row">
-
-											<div id="persons">
-									        </div>
-
+										<div class="row center">
+											<a class="waves-effect waves-light btn-large" href="/persons">Persons</a>
+<!-- 											<a class="waves-effect waves-light btn-large" href="/homes">Homes</a> -->
 										</div>
 									</div>
 								</div>
@@ -30,25 +32,7 @@
 				<!-- End Container -->
 			</div>
 		</main>
-
-
-
-		<a href="/">back</a>
-		<script type="text/javascript">
-		
-			$.ajax({
-			  url: "/rest/person",
-                dataType: 'text', //return type expected as json
-			  beforeSend: function( xhr ) {
-
-			  },
-			  success: function(data){
-			  	$("#persons").text(data);
-			  }
-			})
-
-	
-		</script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	</body>
 </html>
