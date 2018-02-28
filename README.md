@@ -70,6 +70,8 @@ Un serveur de servlet et un serveur Web REST (JAX RS) seront lancés:
 | /device | POST   | Register a device in the service | "curl --request POST --url http://localhost:8080/rest/device --header 'content-type: application/x-www-form-urlencoded' --data 'name=test&power=300&type=electronic&unit=watt&location=living" | 
 | /person | POST   | Register a new person in the system | "curl --request POST --url http://localhost:8080/rest/person --header 'content-type: application/x-www-form-urlencoded' --data 'email=christian%40asd.com&lastname=Julien&firstname=dor%C3%A9'" | 
 | /home | POST  | Register a new home in the service | "curl --request POST --url http://localhost:8080/rest/home --header 'content-type: application/x-www-form-urlencoded' --data 'size=124&rooms=3&name=%22Christian'\''s%20home%22'" | 
+| /device/heater | GET   | Return the list of all registered heaters | "curl --request GET --url http://localhost:8080/rest/device/heater" | 
+| /device/electronic | GET   | Return the list of all registered electronics | "curl --request GET --url http://localhost:8080/rest/device/electronic " | 
 
 ## Author
 
