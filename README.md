@@ -59,10 +59,14 @@ Un serveur de servlet et un serveur Web REST (JAX RS) seront lancés:
 
 ### WS REST (Requetes disponibles)
 
-| Address | Method | Functionality | CURL Command
-| :---         |     :---:      |          ---: |          ---: |
-| git status   | git status     | git status    |           |
-| git diff     | git diff       | git diff      |           |
+| Address | Method | Functionality | CURL Command  |
+| :---  |  :---:  |          ---: |          ---: |
+| /home | GET | Return the list of all registered homes  | "curl --request GET  --url http://localhost:8080/rest/home" |
+| /person | GET   | Return the list of all registered persons | "curl --request GET --url http://localhost:8080/rest/person" | 
+| /person/{identifier} | GET   | Return a person asociated with the provided identifier | "curl --request GET --url http://localhost:8080/rest/home/id/{identifier}" | 
+| /device | POST   | Register a device in the service | "curl --request POST --url http://localhost:8080/rest/device --header 'content-type: application/x-www-form-urlencoded' --data 'name=test&power=300&type=electronic&unit=watt&location=living" | 
+| /person | POST   | Register a new person in the system | "curl --request POST --url http://localhost:8080/rest/person --header 'content-type: application/x-www-form-urlencoded' --data 'email=christian%40asd.com&lastname=Julien&firstname=dor%C3%A9'" | 
+| /home | POST  | Register a new home in the service | "curl --request POST --url http://localhost:8080/rest/home --header 'content-type: application/x-www-form-urlencoded' --data 'size=124&rooms=3&name=%22Christian'\''s%20home%22'" | 
 
 ## Author
 
